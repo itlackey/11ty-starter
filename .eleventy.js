@@ -2,6 +2,10 @@
 module.exports = function (eleventyConfig) {
     var paths = require('./paths.json');
     var config = require('./src/data/config.json');
+    var path = require('path');
+
+    var dataPath = path.relative(paths.content, (paths.data || "../data"));
+    var includesPath = path.relative(paths.content, (paths.themes) || "../themes") + "/" + (config.theme || "default");
 
     //   // Add a date formatter filter to Nunjucks
     //   config.addFilter("dateDisplay", require("./filters/dates.js") );
@@ -18,8 +22,8 @@ module.exports = function (eleventyConfig) {
             dir: {
               input: paths.content || "src/site",
               output: paths.output || "dist",
-              data: paths.data || "../data",
-              includes:  (paths.themes || "../themes") + "/" + (config.theme || "default")
+              data: dataPath,
+              includes:  includesPath
             },
             //jsDataFileSuffix: ".data"
         //     templateFormats : ["njk", "md"],

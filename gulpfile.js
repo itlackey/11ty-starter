@@ -27,10 +27,10 @@ gulp.task('clean-node-modules', function () {
 // Use pump to expose errors more usefully.
 gulp.task('scripts:theme', function (done) {
     pump([
-        gulp.src(path.join("src", paths.themes, config.theme, "/scripts/**/*.js")),
+        gulp.src(path.join("src", paths.themes.replace('../', ''), config.theme, "/scripts/**/*.js")),
         concat('theme.js'),
         uglify(),
-        gulp.dest(path.join(paths.output, 'assets/js'))
+        gulp.dest(path.join(paths.output, 'assets/scripts'))
     ], done());
 });
 gulp.task('scripts:site', function (done) {
@@ -38,7 +38,7 @@ gulp.task('scripts:site', function (done) {
         gulp.src("src/scripts/**/*.js"),
         concat('app.js'),
         uglify(),
-        gulp.dest(path.join(paths.output, 'assets/js'))
+        gulp.dest(path.join(paths.output, 'assets/scripts'))
     ], done());
 });
 gulp.task('scripts:vendor', function (done) {
@@ -47,7 +47,7 @@ gulp.task('scripts:vendor', function (done) {
         gulp.src("src/lib/**/*.js"),
         concat('vendor.js'),
         uglify(),
-        gulp.dest(path.join(paths.output, 'assets/js'))
+        gulp.dest(path.join(paths.output, 'assets/scripts'))
     ], done());
 });
 gulp.task("scripts", gulp.parallel('scripts:site', 'scripts:theme', 'scripts:vendor'));

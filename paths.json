@@ -1,9 +1,9 @@
 {
     "content": "src/site",
-    "data": "../data",    
-    "themes": "../themes",
+    "data": "src/data",    
+    "themes": "src/themes",
     "images": "src/images",
     "scripts": "src/scripts",
-    "styles": "styles",
+    "styles": "src/styles",
     "output": "dist"
 }
