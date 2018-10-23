@@ -1,5 +1,6 @@
 {
-    "content": "src/site",       
+    "content": "src/site",
+    "data": "../data",    
     "themes": "../themes",
     "images": "src/images",
     "scripts": "src/scripts",

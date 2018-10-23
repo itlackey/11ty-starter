@@ -18,8 +18,8 @@ module.exports = function (eleventyConfig) {
             dir: {
               input: paths.content || "src/site",
               output: paths.output || "dist",
-              data: "../data",
-              includes:  (paths.themes || "themes") + "/" + (config.theme || "default")
+              data: paths.data || "../data",
+              includes:  (paths.themes || "../themes") + "/" + (config.theme || "default")
             },
             //jsDataFileSuffix: ".data"
         //     templateFormats : ["njk", "md"],
