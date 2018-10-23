@@ -1,0 +1,8 @@
+{
+    "content": "src/site",       
+    "themes": "../themes",
+    "images": "src/images",
+    "scripts": "src/scripts",
+    "styles": "styles",
+    "output": "dist"
+}
