@@ -12,6 +12,12 @@ var pump = require('pump');
 
 var minify = require('gulp-minify-css');
 
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var fse = require('fs-extra');
+
+
+
 //#region cleaning
 gulp.task('clean', function () {
     return gulp.src(paths.output, { read: false, allowEmpty: true }).pipe(clean());
@@ -41,14 +47,43 @@ gulp.task('scripts:site', function (done) {
         gulp.dest(path.join(paths.output, 'assets/scripts'))
     ], done());
 });
-gulp.task('scripts:vendor', function (done) {
-    //TODO: configure vendor concat
-    pump([
-        gulp.src("src/lib/**/*.js"),
-        concat('vendor.js'),
-        uglify(),
-        gulp.dest(path.join(paths.output, 'assets/scripts'))
-    ], done());
+gulp.task('scripts:vendor', function() {
+    var bundleFile = browserify()
+    .add('src/vendors.js')
+    .transform(require('browserify-css'), {
+        rootDir: 'src',
+        processRelativeUrl: function(relativeUrl) {
+            var stripQueryStringAndHashFromPath = function(url) {
+                return url.split('?')[0].split('#')[0];
+            };
+            var rootDir = path.resolve(process.cwd(), 'src');
+            var relativePath = stripQueryStringAndHashFromPath(relativeUrl);
+            var queryStringAndHash = relativeUrl.substring(relativePath.length);
+
+            //
+            // Copying files from '../node_modules/bootstrap/' to 'dist/vendor/bootstrap/'
+            //
+            var prefix = '../node_modules/';
+            if (_.startsWith(relativePath, prefix)) {
+                var vendorPath = 'assets/' + relativePath.substring(prefix.length);
+                var source = path.join(rootDir, relativePath);
+                var target = path.join(rootDir, vendorPath);
+
+                //gutil.log('Copying file from ' + JSON.stringify(source) + ' to ' + JSON.stringify(target));
+                fse.copySync(source, target);
+
+                // Returns a new path string with original query string and hash fragments
+                return vendorPath + queryStringAndHash;
+            }
+
+            return relativeUrl;
+        }
+    })
+    .bundle();
+
+   return bundleFile
+        .pipe(source('vendors.js'))
+        .pipe(gulp.dest('./dist/assets/scripts'));
 });
 gulp.task("scripts", gulp.parallel('scripts:site', 'scripts:theme', 'scripts:vendor'));
 //#endregion

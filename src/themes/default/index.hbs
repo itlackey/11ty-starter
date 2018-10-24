@@ -1,29 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/theme.min.css" />
-    <title>{{ title }}</title>
-  </head>
-  <body class="{{ bodyClass }}" >
-    <div class="container">
-      <header>
-        <img src="/assets/images/11ty-logo.png" />
-        <ul class="nav">
-         {{#each collections.pages}}
-            <li>
-                <a class="menu-item-link" href="{{this.data.page.url}}">{{this.data.title}}</a>
-            </li>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/site.min.css" />
+  <title>{{ title }}</title>
+</head>
+
+<body class="{{ bodyClass }}">
+  <div class="container">
+    <header>
+      <img src="/assets/images/11ty-logo.png" />
+      <ul class="nav">
+        {{#each collections.pages}}
+        <li>
+          <a class="menu-item-link" href="{{this.data.page.url}}">{{this.data.title}}</a>
+        </li>
         {{/each}}
-        </ul>
-        <h1>{{ title }} <small>{{src.data.config.title}}</small> </h1>
-        {{#if subtitle}}<p class="subtitle">{{ subtitle }}</p>{{/if}}
-      </header>
-      {{{ content }}}
+      </ul>
+      <h1>{{ title }} <small>{{src.data.config.title}}</small> </h1>
+      {{#if subtitle}}<p class="subtitle">{{ subtitle }}</p>{{/if}}
+    </header>
+    {{{ content }}}
+    <script src="/assets/scripts/vendors.js"></script>
+    <script src="/assets/scripts/app.js"></script>
+  </div>
+</body>
 
-      <script src="/assets/scripts/theme.min.js"></script>
-    </div>
-  </body>
 </html>
-
