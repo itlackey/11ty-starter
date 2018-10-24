@@ -35,8 +35,8 @@ gulp.task('clean', gulp.parallel('clean:temp', 'clean:output'));
 // Use pump to expose errors more usefully.
 gulp.task('scripts:theme', function (done) {
 	pump([
-		gulp.src(path.join('src', paths.themes.replace('../', ''), config.theme, '/scripts/**/*.js')),
-		concat('theme.js'),
+		gulp.src(path.join(paths.themes.replace('../', ''), config.theme, '/scripts/**/*.js')),
+		concat('theme.min.js'),
 		uglify(),
 		gulp.dest(path.join(paths.output, 'assets/scripts'))
 	], done());
@@ -44,7 +44,7 @@ gulp.task('scripts:theme', function (done) {
 gulp.task('scripts:site', function (done) {
 	pump([
 		gulp.src('src/scripts/**/*.js'),
-		concat('app.js'),
+		concat('app.min.js'),
 		uglify(),
 		gulp.dest(path.join(paths.output, 'assets/scripts'))
 	], done());
@@ -53,7 +53,7 @@ gulp.task('scripts:vendor', function (done) {
 	//TODO: configure vendor concat
 	pump([
 		gulp.src('src/lib/**/*.js'),
-		concat('vendor.js'),
+		concat('vendor.min.js'),
 		uglify(),
 		gulp.dest(path.join(paths.output, 'assets/scripts'))
 	], done());
