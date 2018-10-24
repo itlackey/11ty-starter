@@ -22,7 +22,7 @@ var themePath = path.join(paths.themes.replace('../', ''), config.theme, '/style
 
 gulp.task('clean:output', () => gulp.src(paths.output, { read: false, allowEmpty: true }).pipe(clean()));
 
-gulp.task('clean:temp', () => gulp.src('./tmp', { read: false, allowEmpty: true }).pipe(clean()));
+gulp.task('clean:temp', () => gulp.src('./temp', { read: false, allowEmpty: true }).pipe(clean()));
 
 gulp.task('clean:packages', () => gulp.src('node_modules', { read: false }).pipe(clean()));
 
@@ -85,31 +85,31 @@ function precompileThemesStyles() {
 	var themeScssGlob = path.join(themePath, '/**/*.scss');
 	return gulp.src(themeScssGlob, { base: './src' })
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('./tmp'));
+		.pipe(gulp.dest('./temp'));
 }
 function  precompileSiteStyles() {
 	return gulp.src('./src/styles/**/*.scss', { base: './src' })
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('./tmp'));
+		.pipe(gulp.dest('./temp'));
 }
 function concatThemeStyles() {
 	var themeStylesGlob = path.join(themePath, '/**/*.css');
-	return gulp.src([themeStylesGlob, './tmp/themes/**/*.css'])
+	return gulp.src([themeStylesGlob, './temp/themes/**/*.css'])
 		.pipe(concat('theme.min.css'))
 		.pipe(minify({ keepBreaks: true }))
 		.pipe(gulp.dest(path.join(paths.output, 'assets/styles')));
 }
 function concatSiteStyles(){
-	return gulp.src(['./src/styles/**/*.css', './tmp/styles/**/*.css'])
+	return gulp.src(['./src/styles/**/*.css', './temp/styles/**/*.css'])
 		.pipe(concat('site.min.css'))
 		.pipe(minify({ keepBreaks: true }))
 		.pipe(gulp.dest(path.join(paths.output, 'assets/styles')));
 }
 function cleanTempThemeStyles(){
-	return gulp.src('./tmp/themes/**/styles', { read: false, allowEmpty: true }).pipe(clean());
+	return gulp.src('./temp/themes/**/styles', { read: false, allowEmpty: true }).pipe(clean());
 }
 function cleanTempSiteStyles(){
-	return gulp.src('./tmp/styles', { read: false, allowEmpty: true }).pipe(clean());
+	return gulp.src('./temp/styles', { read: false, allowEmpty: true }).pipe(clean());
 }
 gulp.task('styles:theme:precompile', precompileThemesStyles);
 gulp.task('styles:theme:concat', concatThemeStyles);
