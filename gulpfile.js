@@ -1,5 +1,5 @@
 
-var paths = require('./paths.json');
+var paths = require('./src/paths.json');
 var config = require('./src/data/config.json');
 var path = require('path');
 var gulp = require('gulp');
@@ -144,6 +144,7 @@ gulp.task('generate', shell.task('eleventy --quiet'));
 gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'images', 'styles'), 'generate'));
 
 gulp.task('serve', gulp.series('build'), function (done) {
+	shell.task('eleventy --serve');
 	done();
 });
 

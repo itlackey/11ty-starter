@@ -1,6 +1,6 @@
 
 module.exports = function (eleventyConfig) {
-    var paths = require('./paths.json');
+    var paths = require('./src/paths.json');
     var config = require('./src/data/config.json');
     var path = require('path');
 
