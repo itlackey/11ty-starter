@@ -1,3 +1,5 @@
 dist/
 node_modules/
 src/themes/wustl.2018
+src/themes/washu
+.DS_Store

@@ -1,0 +1,317 @@
+.floatright
+{
+  float: right;
+  margin: 5px 1em 15px 20px;
+}
+
+.floatleft
+{
+  float: left;
+  margin: 5px 20px 15px 1em;
+}
+
+.wrapper {
+  margin: 1em 0;
+  padding: 0 1em;
+}
+
+.bg-primary {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #0088cc;
+  background-color: #A4D0E5;
+  color: #333;
+}
+
+.unstyled {
+  li {
+    a:link, a:visited {
+      color: #00549F;
+    }
+  }
+}
+.list-unstyled {
+  margin-left: 0;
+}
+
+.undecorated_list, .undecorated_list > li
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.undecorated_item{
+  list-style-type: none;
+}
+.undecorated_list
+{
+  margin: 10px;
+}
+
+.horizontal_list li
+{
+  float: left;
+}
+
+ul.list-btn-smaller li{
+  font-size:12px;
+  line-height:20px;
+}
+
+.text-smaller, .text-smaller ul li{
+  font-size:14px;
+  line-height:22px;
+  margin:8px 0;
+  & ul{
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+  }
+}
+
+select, input[type="text"], input[type="number"]{
+  &.small{
+    width:50px;
+  }
+  &.smaller{
+    width: 30px;
+  }
+}
+
+.no-show {
+  display:none;
+}
+
+.skinny {
+  font-weight:200;
+}
+
+.skinnier{
+  font-weight:100;
+}
+
+.text-light-blue{
+  color:#0088cc;
+}
+
+.cursor-text {
+  cursor:text !important;
+}
+
+.marg-bottom {
+  margin-bottom:10px;
+}
+
+.text-small{
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.mc-smaller{
+  max-width:700px;
+  &.center{
+    margin:0 auto;
+  }
+}
+
+.text-center{
+  text-align: center ! important;
+}
+.text-right{
+  text-align: right ! important;
+}
+
+.text-bold{
+  font-weight: bold;
+}
+.text-green{
+  color:green;
+}
+.text-red{
+  color:red;
+}
+.disabled.darker{
+  background-color: #c6c6c6;
+  border-color: #acacac;
+}
+.italic{
+  font-style:italic;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+// aasc specific
+.no-vis{
+  display:none;
+}
+
+.spacer {
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+.no-list-style {
+  list-style-type: none;
+}
+
+.clearfix:after, .simple_box:after, .fancy_box:after, .module_navigation:after, ol.choices:after, ol.choices li:after, #team-competition-slides:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix, .simple_box, .fancy_box, .module_navigation, ol.choices, #team-competition-slides
+{
+  zoom: 1;
+}
+
+table.center-head {
+  thead tr th {
+    text-align:center;
+  }
+}
+
+.row [class*="span"] {
+  min-height:5px;
+  &.allowscroll{
+    overflow:auto;
+  }
+}
+
+// See below commented out for simplified declarations
+// body, .simple_interactive{
+//   textarea, input, select{
+//     &.stretch-input-w{
+//       box-sizing:border-box;
+//       width:100%;
+//       min-height:30px;
+//       height:30px;
+//     }
+//     &.number-1-width{
+//       width:40px;
+//       min-height: 18px;
+//       height: 18px;
+//     }
+//   }
+// }
+.stretch-input-w{
+  box-sizing:border-box;
+  width:100%;
+  min-height:30px;
+  height:30px;
+}
+
+.number-1-width{
+  width:40px;
+  min-height: 18px;
+  height: 18px;
+}
+
+.admin-margin {
+  margin-top: 40px;
+}
+
+.actions{
+  margin-top:10px;
+}
+
+.lm-cc {
+  margin: 5px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  width: 60px;
+  a {text-decoration:none;}
+
+}
+
+.g_italic {
+  color: gray;
+  font-style: italic;
+}
+
+.yellow-bg{
+  background:#fcf880;
+  color: #d8a21a;
+}
+
+div.word-def-spacing{
+  background: url("https://ogg.osu.edu/media/images/white-gradient-40-percent.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border-bottom: 1px solid grey;
+  height: 30px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lg-gradient {
+  background-color:#7DA1C4;
+}
+
+.blue-hl{
+  outline: none !important;
+  -webkit-box-shadow: 0 0 10px #09F, 0 0 1px #045 !important;
+  box-shadow: 0 0 10px #09F, 0 0 1px #045 !important;
+}
+
+.bg-hazy-blue{
+  background-color:#E9EFF9;
+}
+
+.supplemental-title{
+  text-align: center;
+}
+
+.faculty{
+  text-align: center;
+}
+
+.grey-box {
+  background-color: #F3F3F3;
+}
+
+.transparent {
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+#spacer {
+  padding: 10px;
+}
+
+.incorrect
+{
+  border: none;
+  color: red;
+}
+
+.correct
+{
+  border: none;
+  color: green;
+}
+
+tr.admin_correct
+{
+    color: green;
+    font-weight: bold;
+}
+
+.rationale
+{
+  color: #555555;
+  margin: 1em 0;
+}
+
+.user-studies-index .page-thumbnail-feature {
+  background-position-y: -180px;
+}
